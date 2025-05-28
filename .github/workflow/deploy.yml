@@ -7,7 +7,7 @@ env:
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "sga-develop" ]
   workflow_dispatch:
 
 permissions:
@@ -19,3 +19,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install OpenSSL (libssl)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libssl1.1 || sudo apt-get install -y libssl3
